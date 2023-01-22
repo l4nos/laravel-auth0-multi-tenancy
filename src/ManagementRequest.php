@@ -5,6 +5,7 @@ namespace Lanos\Auth0MultiManagement;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class ManagementRequest
@@ -16,7 +17,6 @@ class ManagementRequest
     private $base_url;
     private $token_url;
     private $api_version;
-    private $access_token;
 
     public function __construct(){
         $this->client_id = config('authz.credentials.client_Id');
@@ -41,10 +41,11 @@ class ManagementRequest
 
         // CHECK TOKEN FIRST
 
-        if(!isset($this->access_token)){
+        if(!Cache::has('auth0_mgmt_token')){
             $tokenRequest = $this->retrieveToken();
             if(isset($tokenRequest->access_token)){
-                $this->access_token = $tokenRequest->access_token;
+                // STORE THE ACCESS TOKEN IN CACHE TO AVOID REPEATED REQUESTS TO TOKEN ENDPOINT
+                Cache::put('auth0_mgmt_token', $tokenRequest->access_token, $tokenRequest->expires_in);
             }else{
                 Log::error('Unable to retrieve access token from Auth0');
                 throw new \Exception('Unable to retrieve access token from Auth0', 500);
@@ -55,7 +56,7 @@ class ManagementRequest
         $headers = [
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer ' . $this->access_token,
+            'Authorization' => 'Bearer ' . Cache::get('auth0_mgmt_token'),
         ];
 
         $options = [
@@ -67,10 +68,8 @@ class ManagementRequest
         $client = new Client($options);
 
         try{
-
             $response = $client->request($method, $url);
             return json_decode($response->getBody()->getContents());
-
         }catch (\Exception $exception){
             Log::error($exception->getMessage());
             return $exception;
