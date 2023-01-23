@@ -8,7 +8,16 @@
 
 This package was built to sit alongside the main auth0 package. Unfortunately that package has limited management API capabilities / facades. This package aims to remedy that.
 
-##### If anyone from Auth0 wishes to merge this extra functionality into the main package, please feel free to fork and extract what you need, all I ask is to be credited.
+## Progress
+
+So far the following items are working:
+
+- Authentication
+- User Management
+- Branding Management
+- Organization Management
+
+##### As I complete other modules, they will be listed above. If anyone from Auth0 wishes to merge this extra functionality into the main package, please feel free to fork and extract what you need, all I ask is to be credited.
 
 ### Documentation Notes 
 
