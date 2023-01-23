@@ -31,7 +31,6 @@ class Branding
 
     }
 
-
     /**
      * @param $theme_id
      * @return Exception|mixed
@@ -43,7 +42,6 @@ class Branding
         return $request->request('DELETE', '/branding/themes/' . $theme_id, null, null);
 
     }
-
 
     /**
      * @param $theme_id
