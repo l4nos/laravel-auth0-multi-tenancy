@@ -3,6 +3,7 @@
 namespace Lanos\Auth0MultiManagement;
 
 use Illuminate\Support\ServiceProvider;
+use Lanos\Auth0MultiManagement\Modules\Organization;
 
 /**
  * Service provider for the package.
