@@ -1,6 +1,6 @@
 {
     "name": "lanos/laravel-auth0-multi-tenancy-management",
-    "description": "Adds Stripe Connect functionality to Laravel's main billing package, Cashier.",
+    "description": "Offers a collection of elegant interface classes to Auth0 Management API",
 	"keywords": ["laravel", "auth0", "multi-tenant", "authentication"],
     "type": "library",
     "require": {
