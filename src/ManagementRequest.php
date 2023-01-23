@@ -23,7 +23,7 @@ class ManagementRequest
         $this->client_secret = config('authz.credentials.client_secret');
         $this->api_version = config('authz.version');
         $this->base_url = config('authz.domain') . '/api/' . $this->api_version;
-        $this->token_url = config('authz.domain') . '/outh/token';
+        $this->token_url = config('authz.domain') . '/oauth/token';
         $this->audience = config('authz.audience');
     }
 
