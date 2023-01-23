@@ -96,7 +96,7 @@ class Organization
     public static function updateConnection($id, $connection_id, array $data){
 
         $request = new ManagementRequest();
-        return $request->request('DELETE', '/organizations/' . $id . '/enabled_connections/' . $connection_id, null, $data);
+        return $request->request('PATCH', '/organizations/' . $id . '/enabled_connections/' . $connection_id, null, $data);
 
     }
 
