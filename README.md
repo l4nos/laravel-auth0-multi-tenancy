@@ -2,9 +2,9 @@
 	Laravel Auth0 Multi Tenancy Management 
 </h1>
 
-## THIS IS A WORK IN PROGRESS, NOT READY FOR PRODUCTION YET
+## This is incomplete, but the below items have been tested and are working.
 
- ## Intro
+## Intro
 
 This package was built to sit alongside the main auth0 package. Unfortunately that package has limited management API capabilities / facades. This package aims to remedy that.
 
