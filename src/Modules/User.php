@@ -18,7 +18,7 @@ class User
     public static function get($query_params){
 
         $request = new ManagementRequest();
-        return $request->request('GET', '/users', $query_params, null);
+        return $request->request('GET', '/users', $query_params);
 
     }
 
