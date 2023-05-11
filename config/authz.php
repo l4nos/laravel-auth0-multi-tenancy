@@ -10,4 +10,5 @@ return [
     'audience' => env('AUTH0_MGMT_AUDIENCE'),
     'version' => 'v2'
 
+
 ];
