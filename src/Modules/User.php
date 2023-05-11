@@ -67,7 +67,7 @@ class User
     public static function update($id, $data){
 
         $request = new ManagementRequest();
-        return $request->request('POST', '/users/' . $id, null, $data);
+        return $request->request('PATCH', '/users/' . $id, null, $data);
 
     }
 

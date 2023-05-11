@@ -55,7 +55,7 @@ Once I have more time I will explore this, for now it's no harm to import the cl
 ````
 <?php
 
-import Lanos\Auth0MultiManagement\Modules\User
+use Lanos\Auth0MultiManagement\Modules\User
 
 public function getUsers(){
 
