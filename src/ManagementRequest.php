@@ -78,7 +78,7 @@ class ManagementRequest
             if($this->retryCount < $this->maxRetries){
                 Cache::delete('auth0_mgmt_token');
                 $this->retryCount = $this->retryCount + 1;
-                $this->request($method, $path, $query_params, $json);
+                return $this->request($method, $path, $query_params, $json);
             }else{
                 Log::error($exception->getMessage());
                 return $exception;
