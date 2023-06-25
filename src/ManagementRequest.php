@@ -18,6 +18,9 @@ class ManagementRequest
     private $token_url;
     private $api_version;
 
+    private $retryCount = 0;
+    private $maxRetries = 1;
+
     public function __construct(){
         $this->client_id = config('authz.credentials.client_Id');
         $this->client_secret = config('authz.credentials.client_secret');
@@ -71,8 +74,16 @@ class ManagementRequest
             $response = $client->request($method, $url);
             return json_decode($response->getBody()->getContents());
         }catch (\Exception $exception){
-            Log::error($exception->getMessage());
-            return $exception;
+
+            if($this->retryCount < $this->maxRetries){
+                Cache::delete('auth0_mgmt_token');
+                $this->retryCount = $this->retryCount + 1;
+                $this->request($method, $path, $query_params, $json);
+            }else{
+                Log::error($exception->getMessage());
+                return $exception;
+            }
+
         }
 
     }
