@@ -2,7 +2,7 @@
 	Laravel Auth0 Multi Tenancy Management 
 </h1>
 
-## This is incomplete, but the below items have been tested and are working.
+## This is deprecated now as since first creating this Auth0 improved their SDK to include comprheensive Admin API support.
 
 ## Intro
 
